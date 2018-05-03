@@ -40,26 +40,24 @@ describe BankAccount do
 
   context "transferring funds" do
 
-    let(:account_1) do
+    let(:account) do
       account = BankAccount.new(500, "Sarah")
     end
 
-    let(:account_2) do
+    let(:other_account) do
       other_account = BankAccount.new(500, "James")
     end
 
     before :each do
-      account.transfer(200, other_account)
+      account.transfer(250, other_account)
     end
 
     it "account balance is decreased" do
-      account_1.transfer(250,account_2)
-      expect(account_1.balance).to eq(250)
+      expect(account.balance).to eq(250)
     end
 
     it "other account balance is increased" do
-      account_1.transfer(250,account_2)
-      expect(account_2.balance).to eq(750)
+      expect(other_account.balance).to eq(750)
     end
 
   end
